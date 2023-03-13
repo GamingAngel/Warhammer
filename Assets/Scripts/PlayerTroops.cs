@@ -3,20 +3,17 @@ using UnityEngine.InputSystem;
 
 public abstract class PlayerTroops : Troops
 {
-    [SerializeField] protected float speed;
-
-    private Rigidbody rb;
-
     private Vector2 moveDirection;
     private Vector2 lookDirection;
+    private bool isShooting;
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        isShooting = context.performed;
+    }
     protected override void Attack()
     {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void Die()
-    {
-        throw new System.NotImplementedException();
+        weapon.Fire();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -30,7 +27,6 @@ public abstract class PlayerTroops : Troops
         rb.MovePosition(rb.position + speed * Time.deltaTime * move);     
     }
 
-
     public void OnLookAt(InputAction.CallbackContext context)
     {
         lookDirection = context.ReadValue<Vector2>();
@@ -42,28 +38,26 @@ public abstract class PlayerTroops : Troops
         if (aimDirection != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDirection), 0.15f);
-        }
-        
+        }     
     }
 
-
-
-
-    protected void Start()
+    protected override void Die()
     {
-        rb=GetComponent<Rigidbody>();
+        throw new System.NotImplementedException();
     }
-    protected void Update()
+
+    private void Update()
     {
         
     }
-    protected void FixedUpdate()
+
+    private void FixedUpdate()
     {
         Move();
         LookAt();
+        if(isShooting)
+        {
+            Attack();
+        }
     }
-
-
-
-
 }
