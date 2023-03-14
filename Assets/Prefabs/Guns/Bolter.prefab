@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4413695264975575428}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8128875966392516951}
   - component: {fileID: 34559865951553791}
   - component: {fileID: 4159293653359125104}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bolter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

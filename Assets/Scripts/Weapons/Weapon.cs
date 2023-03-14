@@ -5,13 +5,12 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private Transform shootingPosition;
     [SerializeField] private GameObject bullet;
 
-    [SerializeField] protected int damage;
-    [SerializeField] protected float fireRate;
+    [SerializeField] private float fireRate;
     
-    [SerializeField] protected int maxBullets;
+    [SerializeField] private int maxBullets;
     private int currentBullets;
 
-    [SerializeField] protected float reloadTime;
+    [SerializeField] private float reloadTime;
     private bool isReloading;
     private float lastShotTime;
 

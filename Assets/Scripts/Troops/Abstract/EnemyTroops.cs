@@ -8,37 +8,30 @@ public abstract class EnemyTroops : Troops
 
     private NavMeshAgent agent;
     private Transform target;
-    protected override void Attack()
-    {
-        throw new System.NotImplementedException();
-    }
 
     protected override void Die()
     {
         throw new System.NotImplementedException();
     }
 
-    private void SetDestinationTroop(Transform playerTrops)
+    private void SetDestinationTroop()
     {
-        target = playerTrops;
+        target = OnTargetFind?.Invoke();
     }
 
     private void OnEnable()
     {
-        SetDestinationTroop(OnTargetFind?.Invoke());
+        SetDestinationTroop();
     }
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
     }
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     private void FixedUpdate()
     {
         agent.SetDestination(target.position);
+        Attack();
+        transform.LookAt(target.position);
     }
 }
