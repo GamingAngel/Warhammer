@@ -35,12 +35,6 @@ public abstract class PlayerTroops : Troops
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDirection), 0.15f);
         }     
     }
-
-    protected override void Die()
-    {
-        throw new System.NotImplementedException();
-    }
-
     private void FixedUpdate()
     {
         Move();

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Troops : MonoBehaviour
+public abstract class Troops : MonoBehaviour, ITakeDamage
 {
 
     [SerializeField]private int maxHealth;
@@ -15,9 +15,13 @@ public abstract class Troops : MonoBehaviour
     {
         weapon.Fire();
     }
-    protected abstract void Die();
-    protected void TakeDamage(int damage)
+    protected virtual void Die()
     {
+        Destroy(gameObject);
+    }
+    public void TakeDamage(int damage)
+    {
+        print("damage");
         currentHealth-=damage;
 
         if (currentHealth <= 0) 

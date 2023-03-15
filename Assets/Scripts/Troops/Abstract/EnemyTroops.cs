@@ -9,11 +9,6 @@ public abstract class EnemyTroops : Troops
     private NavMeshAgent agent;
     private Transform target;
 
-    protected override void Die()
-    {
-        throw new System.NotImplementedException();
-    }
-
     private void SetDestinationTroop()
     {
         target = OnTargetFind?.Invoke();
