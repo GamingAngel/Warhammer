@@ -11,7 +11,6 @@ public abstract class EnemyTroops : Troops
 
     protected override void Die()
     {
-        Debug.Log("Enemy");
         base.Die();
     }
     private void SetDestinationTroop()
@@ -30,8 +29,16 @@ public abstract class EnemyTroops : Troops
     }
     private void FixedUpdate()
     {
-        agent.SetDestination(target.position);
-        Attack();
-        transform.LookAt(target.position);
+        if (target)
+        {
+            agent.SetDestination(target.position);
+            Attack();
+            transform.LookAt(target.position);
+        }
+        else
+        {
+            SetDestinationTroop();
+        }
+
     }
 }

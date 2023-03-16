@@ -3,15 +3,17 @@ using UnityEngine;
 
 public class ListOfTroops : MonoBehaviour
 {
-    public List<Transform> numberOfTroops;
+    private List<Transform> numberOfTroops =new();
 
     private void OnEnable()
     {
         EnemyTroops.OnTargetFind += GetRandomTroop;
+        PlayerTroops.OnTargetDead += DeleteTroopFromList;
     }
     private void OnDisable()
     {
         EnemyTroops.OnTargetFind -= GetRandomTroop;
+        PlayerTroops.OnTargetDead -= DeleteTroopFromList;
     }
 
     void Start()
@@ -27,4 +29,8 @@ public class ListOfTroops : MonoBehaviour
         return numberOfTroops[Random.Range(0,numberOfTroops.Count)];
     }
 
+    public void DeleteTroopFromList(Transform troopToDelete)
+    {
+        numberOfTroops.Remove(troopToDelete);
+    }
 }

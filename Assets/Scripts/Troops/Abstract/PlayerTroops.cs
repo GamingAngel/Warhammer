@@ -1,15 +1,18 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public abstract class PlayerTroops : Troops
 {
+    public static Action<Transform> OnTargetDead;
+
     private Vector2 moveDirection;
     private Vector2 lookDirection;
     private bool isShooting;
 
     protected override void Die()
     {
-        Debug.Log("player");
+        OnTargetDead?.Invoke(transform);
         base.Die();
     }
     public void OnAttack(InputAction.CallbackContext context)
