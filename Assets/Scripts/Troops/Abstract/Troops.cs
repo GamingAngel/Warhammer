@@ -20,10 +20,8 @@ public abstract class Troops : MonoBehaviour, ITakeDamage
         Destroy(gameObject);
     }
     public void TakeDamage(int damage)
-    {
-        print("damage");
+    {     
         currentHealth-=damage;
-
         if (currentHealth <= 0) 
         {
             Die();

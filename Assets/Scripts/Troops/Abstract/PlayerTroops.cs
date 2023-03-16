@@ -7,6 +7,11 @@ public abstract class PlayerTroops : Troops
     private Vector2 lookDirection;
     private bool isShooting;
 
+    protected override void Die()
+    {
+        Debug.Log("player");
+        base.Die();
+    }
     public void OnAttack(InputAction.CallbackContext context)
     {
         isShooting = context.performed;

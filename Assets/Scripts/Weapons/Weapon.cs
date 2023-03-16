@@ -20,8 +20,7 @@ public abstract class Weapon : MonoBehaviour
         {
             Instantiate(bullet, shootingPosition.position, shootingPosition.rotation);
             lastShotTime = Time.time;
-            currentBullets--;
-            print("Shot");
+            currentBullets--;        
         }
         else if (currentBullets<=0 && !isReloading)
         {
@@ -31,9 +30,7 @@ public abstract class Weapon : MonoBehaviour
     }
 
     private void ReloadWeapon()
-    {
-        print("Reload");
-       
+    {      
         currentBullets = maxBullets;
         isReloading = false;
     }
