@@ -5,12 +5,16 @@ using UnityEngine.AI;
 public abstract class EnemyTroops : Troops
 {
     public static Func<Transform> OnTargetFind;
+    public static Action<int> OnDeath;
+
+    [SerializeField] private int influence;
 
     private NavMeshAgent agent;
     private Transform target;
 
     protected override void Die()
     {
+        OnDeath?.Invoke(influence);
         base.Die();
     }
     private void SetDestinationTroop()
