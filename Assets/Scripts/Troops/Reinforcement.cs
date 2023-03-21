@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Reinforcement : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Reinforcement : MonoBehaviour
     private int selectedBonus = -1;
     private int bonusPrice;
     private Button buttonSelected;
+
+    [SerializeField] private GameObject[] bonuses;
     private void OnEnable()
     {
         EnemyTroops.OnDeath += Increase;
@@ -50,15 +53,21 @@ public class Reinforcement : MonoBehaviour
         buttonSelected = button;
     }
 
-    public void UseBonus()
+    public void UseBonus(InputAction.CallbackContext context)
     {
         if (selectedBonus != -1)
         {
-            Debug.Log(selectedBonus);
+            Vector3 positionToSpawn = context.ReadValue<Vector2>();
+            positionToSpawn.z =7; //takes camera z position
+            positionToSpawn = Camera.main.ScreenToWorldPoint(positionToSpawn);
+            positionToSpawn.y += 10;
+ 
+            Instantiate(bonuses[selectedBonus], positionToSpawn, Quaternion.identity);          
             selectedBonus = -1;
             reinforcementPoints -= bonusPrice;
             text.text = reinforcementPoints.ToString();
             buttonSelected.interactable = true;
+
         }      
     }
 }
