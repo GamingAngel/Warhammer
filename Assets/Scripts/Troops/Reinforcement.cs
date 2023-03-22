@@ -62,7 +62,7 @@ public class Reinforcement : MonoBehaviour
             positionToSpawn = Camera.main.ScreenToWorldPoint(positionToSpawn);
             positionToSpawn.y += 10;
  
-            Instantiate(bonuses[selectedBonus], positionToSpawn, Quaternion.identity);          
+            Instantiate(bonuses[selectedBonus], positionToSpawn, transform.rotation);          
             selectedBonus = -1;
             reinforcementPoints -= bonusPrice;
             text.text = reinforcementPoints.ToString();
