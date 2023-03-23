@@ -45,11 +45,13 @@ public abstract class PlayerTroops : Troops
     }
     private void FixedUpdate()
     {
+       
         Move();
         LookAt();
         if(isShooting)
         {
             Attack();
         }
+       
     }
 }
