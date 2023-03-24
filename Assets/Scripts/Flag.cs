@@ -24,13 +24,9 @@ public class Flag : MonoBehaviour
             {
                 OnWin?.Invoke(SceneManager.GetActiveScene().buildIndex+1);
                 GetComponent<Collider>().enabled = false;
-                print("win");
             }
         }     
     }
 
-    private void Start()
-    {
-        speed = Math.Abs((STARTPOSITION-HEIGHTTOLIFT) / timeToDefend);
-    }
+    private void Start() => speed = Math.Abs((STARTPOSITION - HEIGHTTOLIFT) / timeToDefend);
 }

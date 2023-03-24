@@ -17,20 +17,11 @@ public abstract class EnemyTroops : Troops
         OnDeath?.Invoke(influence);
         base.Die();
     }
-    private void SetDestinationTroop()
-    {
-        target = OnTargetFind?.Invoke();
-    }
 
-    private void OnEnable()
-    {
-        SetDestinationTroop();
-    }
+    private void SetDestinationTroop() => target = OnTargetFind?.Invoke();
+    private void OnEnable() => SetDestinationTroop();
+    private void Awake() => agent = GetComponent<NavMeshAgent>();
 
-    private void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
     private void FixedUpdate()
     {
         if (target)

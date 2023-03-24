@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject troop;
+    [SerializeField] private Transform[] positions;
+
+    private void Start()
     {
-        
+        Destroy(gameObject,7);
+        Invoke(nameof(SpawnTroops), 1.6f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SpawnTroops()
     {
-        
+        for (int i = 0; i < positions.Length; i++)
+        {
+            Instantiate(troop, positions[i].position, positions[i].rotation);
+        }
     }
 }

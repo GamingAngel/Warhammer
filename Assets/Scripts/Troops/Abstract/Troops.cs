@@ -11,14 +11,10 @@ public abstract class Troops : MonoBehaviour, ITakeDamage
     protected Rigidbody rb;
     private Weapon weapon;
 
-    protected void Attack()
-    {
-        weapon.Fire();
-    }
-    protected virtual void Die()
-    {
-        Destroy(gameObject);
-    }
+    protected void Attack() => weapon.Fire();
+    protected virtual void Die() => Destroy(gameObject);
+
+
     public void TakeDamage(int damage)
     {     
         currentHealth-=damage;
@@ -27,7 +23,8 @@ public abstract class Troops : MonoBehaviour, ITakeDamage
             Die();
         } 
     }
-    protected void Start()
+
+    protected virtual void Start()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();

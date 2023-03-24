@@ -9,28 +9,22 @@ public class ListOfTroops : MonoBehaviour
     {
         EnemyTroops.OnTargetFind += GetRandomTroop;
         PlayerTroops.OnTargetDead += DeleteTroopFromList;
+        PlayerTroops.OnTargetSpawn += AddTroop;
     }
     private void OnDisable()
     {
         EnemyTroops.OnTargetFind -= GetRandomTroop;
         PlayerTroops.OnTargetDead -= DeleteTroopFromList;
+        PlayerTroops.OnTargetSpawn -= AddTroop;
     }
 
-    void Start()
-    {
-        foreach (Transform troop in transform)
-        {
-            numberOfTroops.Add(troop);
-        }
-    }
+    private void AddTroop(Transform troop) => numberOfTroops.Add(troop);
 
-    public Transform GetRandomTroop()
+
+    private Transform GetRandomTroop()
     {
         return numberOfTroops[Random.Range(0,numberOfTroops.Count)];
     }
 
-    public void DeleteTroopFromList(Transform troopToDelete)
-    {
-        numberOfTroops.Remove(troopToDelete);
-    }
+    private void DeleteTroopFromList(Transform troopToDelete) => numberOfTroops.Remove(troopToDelete);
 }

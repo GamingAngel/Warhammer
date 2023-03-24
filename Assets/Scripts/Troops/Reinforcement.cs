@@ -1,13 +1,10 @@
 using UnityEngine;
 using TMPro;
-using System;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class Reinforcement : MonoBehaviour
 {
-
-
     private TMP_Text text;
 
     private int reinforcementPoints=1000;
@@ -67,7 +64,6 @@ public class Reinforcement : MonoBehaviour
             reinforcementPoints -= bonusPrice;
             text.text = reinforcementPoints.ToString();
             buttonSelected.interactable = true;
-
         }      
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public abstract class PlayerTroops : Troops
 {
     public static Action<Transform> OnTargetDead;
+    public static Action<Transform> OnTargetSpawn;
 
     private Vector2 moveDirection;
     private Vector2 lookDirection;
@@ -15,20 +16,13 @@ public abstract class PlayerTroops : Troops
         OnTargetDead?.Invoke(transform);
         base.Die();
     }
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        isShooting = context.performed;
-    }
 
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveDirection = context.ReadValue<Vector2>();
-    }
-    public void OnLookAt(InputAction.CallbackContext context)
-    {
-        lookDirection = context.ReadValue<Vector2>();
-    }
+    public void OnAttack(InputAction.CallbackContext context) => isShooting = context.performed;
 
+    public void OnMove(InputAction.CallbackContext context) => moveDirection = context.ReadValue<Vector2>();
+
+    public void OnLookAt(InputAction.CallbackContext context) => lookDirection = context.ReadValue<Vector2>();
+ 
     private void Move()
     {
         Vector3 move = new(moveDirection.x, 0, moveDirection.y);
@@ -44,14 +38,18 @@ public abstract class PlayerTroops : Troops
         }     
     }
     private void FixedUpdate()
-    {
-       
+    {     
         Move();
         LookAt();
         if(isShooting)
         {
             Attack();
-        }
-       
+        }     
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        OnTargetSpawn?.Invoke(transform);
     }
 }

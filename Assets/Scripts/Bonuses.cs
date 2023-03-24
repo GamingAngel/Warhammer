@@ -16,14 +16,8 @@ public class Bonuses : MonoBehaviour
         {
             bonusIcon.interactable = false;
             OnBonusReady?.Invoke(bonusNumber,price, bonusIcon);
-        }
-       
+        }      
     }
 
-    private void Start()
-    {
-        bonusIcon = GetComponent<Button>();
-    }
-
-
+    private void Start() => bonusIcon = GetComponent<Button>();
 }

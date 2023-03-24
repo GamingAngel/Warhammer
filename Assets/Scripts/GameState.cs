@@ -26,10 +26,7 @@ public class GameState : MonoBehaviour
         fadeImage.CrossFadeAlpha(0f, fadingTime, true);
     }
 
-    private void CallFade(int levelIndex)
-    {
-        StartCoroutine(Fade(levelIndex));
-    }
+    private void CallFade(int levelIndex) => StartCoroutine(Fade(levelIndex));
 
     private IEnumerator Fade(int levelIndex)
     {
