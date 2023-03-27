@@ -51,5 +51,7 @@ public abstract class PlayerTroops : Troops
     {
         base.Start();
         OnTargetSpawn?.Invoke(transform);
+
+
     }
 }
