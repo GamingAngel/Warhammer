@@ -18,6 +18,7 @@ public abstract class Weapon : MonoBehaviour
     {
         if (currentBullets > 0 && Time.time>lastShotTime+fireRate)
         {
+            print(gameObject.name);
             Instantiate(bullet, shootingPosition.position, shootingPosition.rotation);
             lastShotTime = Time.time;
             currentBullets--;        
