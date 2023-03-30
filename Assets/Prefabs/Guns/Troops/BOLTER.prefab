@@ -162,6 +162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPosition: {fileID: 5657456420703368290}
   bullet: {fileID: 3628733321689552912, guid: 68f6afb2ef82a7f47a23236580f6c113, type: 3}
-  fireRate: 1
+  fireRate: 0.2
   maxBullets: 10
   reloadTime: 5
