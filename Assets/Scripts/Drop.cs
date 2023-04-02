@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-    [SerializeField] private GameObject troop;
+    [SerializeField] private GameObject[] troop;
     [SerializeField] private Transform[] positions;
 
     private void Start()
@@ -15,7 +15,7 @@ public class Drop : MonoBehaviour
     {
         for (int i = 0; i < positions.Length; i++)
         {
-            Instantiate(troop, positions[i].position, positions[i].rotation);
+            Instantiate(troop[i], positions[i].position, positions[i].rotation);
         }
     }
 }

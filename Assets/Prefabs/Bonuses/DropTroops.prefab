@@ -45,7 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb09258573ee7f742927eb58de99184d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  troop: {fileID: 2724845899778124112, guid: f5f1b199b57f5714a9a8cbdc58419b65, type: 3}
+  troop:
+  - {fileID: 2724845899778124112, guid: f5f1b199b57f5714a9a8cbdc58419b65, type: 3}
+  - {fileID: 2724845899778124112, guid: f5f1b199b57f5714a9a8cbdc58419b65, type: 3}
+  - {fileID: 2724845899778124112, guid: f5f1b199b57f5714a9a8cbdc58419b65, type: 3}
+  - {fileID: 2724845899778124112, guid: f5f1b199b57f5714a9a8cbdc58419b65, type: 3}
+  - {fileID: 2724845899778124112, guid: f5f1b199b57f5714a9a8cbdc58419b65, type: 3}
   positions:
   - {fileID: 2940881643689349328}
   - {fileID: 4365080632565683699}
