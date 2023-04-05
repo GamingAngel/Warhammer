@@ -4,6 +4,7 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private Transform shootingPosition;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject muzzleParticle;
 
     [SerializeField] private float fireRate;
     
@@ -18,8 +19,9 @@ public abstract class Weapon : MonoBehaviour
     {
         if (currentBullets > 0 && Time.time>lastShotTime+fireRate)
         {
-            print(gameObject.name);
             Instantiate(bullet, shootingPosition.position, shootingPosition.rotation);
+            GameObject particle = Instantiate(muzzleParticle, shootingPosition.position, shootingPosition.rotation);
+            Destroy(particle ,1f);
             lastShotTime = Time.time;
             currentBullets--;        
         }

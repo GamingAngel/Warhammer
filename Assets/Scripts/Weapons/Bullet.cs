@@ -3,9 +3,10 @@ using UnityEngine;
 public abstract class Bullet : MonoBehaviour
 {
     private Rigidbody rb;
-    private readonly int bulletDestroyTime=7;
+    private readonly int bulletDestroyTime=2;
     [SerializeField] private int damage;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private GameObject bulletHit;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public abstract class Bullet : MonoBehaviour
         {
             doDamage.TakeDamage(damage);
         }
+        GameObject hitEffect = Instantiate(bulletHit, transform.position, Quaternion.identity);
+        Destroy(hitEffect, bulletDestroyTime);
         Destroy(gameObject);
     }
 

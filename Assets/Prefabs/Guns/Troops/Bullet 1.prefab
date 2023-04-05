@@ -76,6 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   bulletSpeed: 700
+  bulletHit: {fileID: 7319092996256263592, guid: 62ce32c4c286a38459a48b765f4e8f71, type: 3}
 --- !u!65 &5425014659232918342
 BoxCollider:
   m_ObjectHideFlags: 0

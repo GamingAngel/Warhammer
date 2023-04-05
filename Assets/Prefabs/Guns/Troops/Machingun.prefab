@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPosition: {fileID: 7156511168404391946}
   bullet: {fileID: 3628733321689552912, guid: 68f6afb2ef82a7f47a23236580f6c113, type: 3}
+  muzzleParticle: {fileID: 3190131506668085094, guid: b401511a59a1ceb40b0b536f4ba6e6a0, type: 3}
   fireRate: 0.1
   maxBullets: 50
   reloadTime: 5
