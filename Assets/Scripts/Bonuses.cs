@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class Bonuses : MonoBehaviour
 {
     public static Func<int> OnBonusSelect;
@@ -20,4 +20,10 @@ public class Bonuses : MonoBehaviour
     }
 
     private void Start() => bonusIcon = GetComponent<Button>();
+
+    private void OnValidate()
+    {
+        TMP_Text valueText = GetComponentInChildren<TMP_Text>();
+        valueText.text = price.ToString();
+    }
 }
